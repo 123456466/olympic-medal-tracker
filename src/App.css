@@ -25,6 +25,13 @@ header{
 .ShowList{
     display: flex;
     flex-direction: column;
+    padding: 0px;
+}
+
+.TopList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .List{

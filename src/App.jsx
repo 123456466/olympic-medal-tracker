@@ -18,6 +18,8 @@ const App = () => {
             return alert('국가를 입력 해주세요.')
         }else if(!newGold.trim() || !newSilver.trim() || !newBronze.trim()){
             return alert('메달 수를 입력 해주세요.')
+        }else if(newGold < 0 || newSilver < 0 || newBronze < 0){
+            return alert('숫자가 너무 낮습니다!')
         }
 
         setMedals([...medals, {id: crypto.randomUUID(), country: newCountry, gold: newGold, silver: newSilver, bronze: newBronze}]);
@@ -40,10 +42,14 @@ const App = () => {
         setNewBronze(element.target.value);
     }
 
+    const amendList = (element) => {
+        element.preventDefault()
+    }
+
     return (
         <main>
             <header>2024 올림픽 메달</header>
-            <form className='AddList' onSubmit={handleSubmit}>
+            <form className='AddList'>
                 <div className='SetCountry'>
                     <p>국가명</p>
                     <input type='text' value={newCountry} onChange={countryChange}/>
@@ -60,9 +66,10 @@ const App = () => {
                     <p>동메달</p>
                     <input type='number' value={newBronze} onChange={bronzeChange}/>
                 </div>
-                <button className='CreateListButton'>추가하기</button>
-                <button className='AmendListButton'>수정하기</button>
+                <button className='CreateListButton'onClick={handleSubmit}>추가하기</button>
+                <button className='AmendListButton' onClick={amendList}>수정하기</button>
             </form>
+            
             <ul className='ShowList'>
                 <div className='TopList'>
                     <p>국가명</p>
@@ -72,7 +79,7 @@ const App = () => {
                     <p>　</p>
                 </div>
                 {medals.map((medalList) => (
-                    <div key={medalList.id}>
+                    <div key={medalList.id} className='List'>
                         <p>{medalList.country}</p>
                         <p>{medalList.gold}</p>
                         <p>{medalList.silver}</p>
