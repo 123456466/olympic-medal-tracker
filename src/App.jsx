@@ -55,23 +55,25 @@ const App = () => {
 
         if (!medals.find(({ country }) => country === newCountry)) {
             return alert('국가가 존재하지 않습니다.');
-
         } else if (!newGold.trim() || !newSilver.trim() || !newBronze.trim()) {
             return alert('메달 수를 입력 해주세요.');
-
         } else if (newGold < 0 || newSilver < 0 || newBronze < 0) {
             return alert('숫자가 너무 낮습니다!');
-
         } else {
             const addMedal = medals.map((list) => {
                 return (list.country === newCountry) ? { ...list, gold: newGold, silver: newSilver, bronze: newBronze } : list
             })
+
             setMedals(addMedal)
             setNewCountry('');
             setNewGold('');
             setNewSilver('');
             setNewBronze('');
         }
+    }
+
+    const del = (e) =>{
+        console.log(e.target)
     }
 
     return (
@@ -112,7 +114,7 @@ const App = () => {
                         <p className='ListContents'>{medalList.gold}</p>
                         <p className='ListContents'>{medalList.silver}</p>
                         <p className='ListContents'>{medalList.bronze}</p>
-                        <button className='Delete'>Delete</button>
+                        <button className='Delete' onClick={del}>Delete</button>
                     </div>
                 ))}
             </ul>
