@@ -20,6 +20,11 @@ header{
 .AddList{
     display: flex;
     flex-direction: row;
+    text-align: center;
+}
+
+.ListButton{
+    margin: auto auto 0px auto
 }
 
 .ShowList{
@@ -32,10 +37,20 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    text-align: center;
 }
 
 .List{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    text-align: center;
+}
+
+.ListContents{
+    width: 20%;
+}
+
+.Delete{
+    margin: auto;
 }
